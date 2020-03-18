@@ -208,7 +208,7 @@ pub trait Trait: frame_system::Trait {
 	type RecoveryDeposit: Get<BalanceOf<Self>>;
 
 	/// The means of dispatching the calls.
-	type Dispatcher: Dispatcher<<Self as Trait>::Call>;
+	type Dispatcher: Dispatcher<<Self as Trait>::Call, Self::Origin, Self::RootDispatcher>;
 }
 
 /// An active recovery process.

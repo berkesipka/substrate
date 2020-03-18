@@ -365,7 +365,7 @@ impl<Origin, Call, Extra, Info> Applyable for TestXt<Call, Extra> where
 
 	/// Executes all necessary logic needed prior to dispatch and deconstructs into function call,
 	/// index and sender.
-	fn apply<U: ValidateUnsigned<Call = Self::Call>, D: Dispatcher<Call, Origin>>(
+	fn apply<U: ValidateUnsigned<Call = Self::Call>, D: Dispatcher<Call, Origin, ()>>(
 		self,
 		info: Self::DispatchInfo,
 		len: usize,

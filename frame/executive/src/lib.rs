@@ -121,7 +121,7 @@ impl<
 		OnFinalize<System::BlockNumber> +
 		OffchainWorker<System::BlockNumber> +
 		WeighBlock<System::BlockNumber>,
-	Dispatcher: traits::Dispatcher<CallOf<Block::Extrinsic, Context>, OriginOf<Block::Extrinsic, Context>>,
+	Dispatcher: traits::RootDispatcher<CallOf<Block::Extrinsic, Context>, OriginOf<Block::Extrinsic, Context>>,
 > ExecuteBlock<Block> for Executive<System, Block, Context, UnsignedValidator, AllModules, Dispatcher>
 where
 	Block::Extrinsic: Checkable<Context> + Codec,
@@ -148,7 +148,7 @@ impl<
 		OnFinalize<System::BlockNumber> +
 		OffchainWorker<System::BlockNumber> +
 		WeighBlock<System::BlockNumber>,
-	Dispatcher: traits::Dispatcher<CallOf<Block::Extrinsic, Context>, OriginOf<Block::Extrinsic, Context>>,
+	Dispatcher: traits::RootDispatcher<CallOf<Block::Extrinsic, Context>, OriginOf<Block::Extrinsic, Context>>,
 > Executive<System, Block, Context, UnsignedValidator, AllModules, Dispatcher>
 where
 	Block::Extrinsic: Checkable<Context> + Codec,

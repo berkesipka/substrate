@@ -240,7 +240,7 @@ pub trait Trait: 'static + Eq + Clone {
 	/// itself. It is important to understand that by doing this the dispatch becomes
 	/// invisible to the rest of the runtime machinery which relies on the `RootDispatcher`
 	/// bookkeeping.
-	type RootDispatcher: sp_runtime::traits::Dispatcher<Self::Call, Self::Origin>;
+	type RootDispatcher: sp_runtime::traits::RootDispatcher<Self::Call, Self::Origin>;
 }
 
 pub type DigestOf<T> = generic::Digest<<T as Trait>::Hash>;
@@ -1055,14 +1055,14 @@ impl<T: Trait> Module<T> {
 	}
 }
 
-impl<T: Trait> sp_runtime::traits::Dispatcher<T::Call, T::Origin> for Module<T> where 
+impl<T: Trait> sp_runtime::traits::RootDispatcher<T::Call, T::Origin> for Module<T> where
 	T::Call: Dispatchable<Origin = T::Origin>,
 {
 	fn dispatch(
 		dispatchable: T::Call,
 		origin: <T::Call as Dispatchable>::Origin,
 	) -> sp_runtime::DispatchResult {
-		dispatchable.dispatch(origin)
+		Self::raw_dispatch(dispatchable, origin)
 	}
 }
 

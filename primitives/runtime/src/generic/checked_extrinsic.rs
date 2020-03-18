@@ -59,7 +59,7 @@ impl<AccountId, Call, Extra, Origin, Info> traits::Applyable
 		}
 	}
 
-	fn apply<U: ValidateUnsigned<Call = Call>, D: Dispatcher<Call, Origin>>(
+	fn apply<U: ValidateUnsigned<Call = Call>, D: Dispatcher<Call, Origin, ()>>(
 		self,
 		info: Self::DispatchInfo,
 		len: usize,
@@ -84,7 +84,7 @@ pub fn apply<U, D, Info, Call, Extra, Origin, AccountId>(
 	Info: Clone,
 	Extra: SignedExtension<AccountId = AccountId, Call = Call, DispatchInfo = Info>,
 	U: ValidateUnsigned<Call = Call>,
-	D: Dispatcher<Call, Origin>,
+	D: Dispatcher<Call, Origin, ()>,
 {
 	let (maybe_who, pre) = if let Some((who, extra)) = signature {
 		let pre = Extra::pre_dispatch(extra, &who, &call, info.clone(), len)?;

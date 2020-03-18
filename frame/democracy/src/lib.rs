@@ -372,7 +372,7 @@ pub trait Trait: frame_system::Trait + Sized {
 	type Slash: OnUnbalanced<NegativeImbalanceOf<Self>>;
 
 	/// The means of dispatching the proposals.
-	type Dispatcher: Dispatcher<Self::Proposal>;
+	type Dispatcher: Dispatcher<Self::Proposal, Self::Origin, Self::RootDispatcher>;
 }
 
 /// Info regarding an ongoing referendum.

@@ -369,7 +369,7 @@ pub trait Trait: frame_system::Trait {
 	type TrieIdGenerator: TrieIdGenerator<Self::AccountId>;
 
 	/// The means of dispatching the calls to the runtime.
-	type Dispatcher: Dispatcher<<Self as Trait>::Call>;
+	type Dispatcher: Dispatcher<<Self as Trait>::Call, Self::Origin, Self::RootDispatcher>;
 
 	/// Handler for the unbalanced reduction when making a gas payment.
 	type GasPayment: OnUnbalanced<NegativeImbalanceOf<Self>>;

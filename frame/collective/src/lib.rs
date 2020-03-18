@@ -71,7 +71,7 @@ pub trait Trait<I=DefaultInstance>: frame_system::Trait {
 	type MotionDuration: Get<Self::BlockNumber>;
 
     /// The means of dispatching the calls to the runtime.
-	type Dispatcher: sp_runtime::traits::Dispatcher<<Self as Trait<I>>::Proposal>;
+	type Dispatcher: Dispatcher<<Self as Trait<I>>::Proposal, <Self as Trait<I>>::Origin, Self::RootDispatcher>;
 }
 
 /// Origin for the collective module.

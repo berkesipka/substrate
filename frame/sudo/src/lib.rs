@@ -102,7 +102,7 @@ pub trait Trait: frame_system::Trait {
 	type Call: Parameter + Dispatchable<Origin=Self::Origin> + GetDispatchInfo;
 
 	/// The means of dispatching the calls.
-	type Dispatcher: Dispatcher<<Self as Trait>::Call>;
+	type Dispatcher: Dispatcher<<Self as Trait>::Call, Self::Origin, Self::RootDispatcher>;
 }
 
 decl_module! {

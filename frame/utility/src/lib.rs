@@ -101,7 +101,7 @@ pub trait Trait: frame_system::Trait {
 	type MaxSignatories: Get<u16>;
 
 	/// The dispatcher of calls/proposals.
-	type Dispatcher: Dispatcher<<Self as Trait>::Call>;
+	type Dispatcher: Dispatcher<<Self as Trait>::Call, Self::Origin, Self::RootDispatcher>;
 }
 
 /// A global extrinsic index, formed as the extrinsic index within a block, together with that
